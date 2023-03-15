@@ -12,13 +12,13 @@ pipeline {
                 sh 'docker compose build'
             }
         }
-        stage('Push image') {
+         stage('Push image') {
             steps {
-                sh "docker tag flamup:latest ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker tag flamup:latest saikiran27/flamup:latest"
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                     sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
                 }
-                sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker push saikiran27/flamup:latest"
             }
         }
     }
