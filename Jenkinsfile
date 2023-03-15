@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
     PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Docker.app/Contents/Resources/bin/:/Users/saikiranreddy/Library/Group\\ Containers/group.com.docker/Applications/Docker.app/Contents/Resources/bin:/usr/local/bin/docker-compose:/usr/local/bin"
-    IMAGE_NAME = "saikiran27/flamup"
+    IMAGE_NAME = "saikiran27/java-flamup"
     IMAGE_TAG = "latest"
     }
 
