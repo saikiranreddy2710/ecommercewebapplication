@@ -14,11 +14,11 @@ pipeline {
         }
          stage('Push image') {
             steps {
-                sh "docker tag flamup:latest saikiran27/java-flamup:latest"
+                sh "docker tag java-flamup:latest saikiran27/java-flamup:latest"
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'Saikiran@2710', usernameVariable: 'saikiran27')]) {
                     sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
                 }
-                sh "docker push saikiran27/flamup:latest"
+                sh "docker push saikiran27/java-flamup:latest"
             }
         }
     }
