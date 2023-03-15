@@ -4,14 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'export PATH=$PATH:/usr/local/bin'
-                sh 'docker compose build'
+                sh 'docker compose version'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'export PATH=$PATH:/usr/local/bin'
-                sh 'docker compose up'
+                sh 'docker-compose --version'
             }
         }
     }
