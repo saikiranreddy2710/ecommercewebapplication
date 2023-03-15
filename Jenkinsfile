@@ -2,7 +2,9 @@ pipeline {
     agent any
     environment {
     PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Docker.app/Contents/Resources/bin/:/Users/saikiranreddy/Library/Group\\ Containers/group.com.docker/Applications/Docker.app/Contents/Resources/bin:/usr/local/bin/docker-compose:/usr/local/bin"
-}
+    IMAGE_NAME = "saikiran27/flamup"
+    IMAGE_TAG = "latest"
+    }
 
     stages {
         stage('Build') {
@@ -10,9 +12,13 @@ pipeline {
                 sh 'docker compose build'
             }
         }
-        stage('Deploy') {
+        stage('Push image') {
             steps {
-                sh 'docker compose up'
+                sh "docker tag flamup:latest ${IMAGE_NAME}:${IMAGE_TAG}"
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                    sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+                }
+                sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
     }
