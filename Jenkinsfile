@@ -7,12 +7,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker compose version'
+                sh 'docker compose build'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'docker compose version'
+                sh 'docker compose up'
             }
         }
     }
