@@ -21,6 +21,7 @@ pipeline {
                         sh './gradlew sonarqube'
                     }
                 }
+            }
             
         stage('Build') {
             steps {
