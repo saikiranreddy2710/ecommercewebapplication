@@ -12,8 +12,8 @@ pipeline {
             agent {
                 docker {
                     image 'sonarqube:lts'
-                       }
-                  }
+                }
+            }
             steps {
                 script {
                     withsonarQubeEnv(credentialsId:'sonarqube') {
@@ -22,13 +22,15 @@ pipeline {
                     }
                 }
             }
-            
+        } // close Sonarqube Quality check stage here
+        
         stage('Build') {
             steps {
                 sh 'docker compose build'
             }
         }
-         stage('Push image') {
+        
+        stage('Push image') {
             steps {
                 sh "docker tag java-flamup:latest saikiran27/java-flamup:latest"
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'Saikiran@2710', usernameVariable: 'saikiran27')]) {
@@ -38,3 +40,4 @@ pipeline {
             }
         }
     }
+}
