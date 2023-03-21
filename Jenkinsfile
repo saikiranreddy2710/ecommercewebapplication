@@ -11,7 +11,7 @@ pipeline {
         stage("Sonarqube Quality check") {
             agent {
                 docker {
-                    image 'sonarqube:lts'
+                    image 'openjdk:11'
                 }
             }
             steps {
