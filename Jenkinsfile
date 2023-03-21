@@ -5,8 +5,23 @@ pipeline {
     IMAGE_NAME = "saikiran27/java-flamup"
     IMAGE_TAG = "latest"
     }
+    
 
     stages {
+        stage("Sonarqube Quality check") {
+            agent {
+                docker {
+                    image 'sonarqube:lts'
+                       }
+                  }
+            steps {
+                script {
+                    withsonarQubeEnv(credentialsId:'sonarqube'){
+                        sh 'chmod +x gradlew'
+                        sh './gradlew sonarqube'
+                    }
+                }
+            
         stage('Build') {
             steps {
                 sh 'docker compose build'
