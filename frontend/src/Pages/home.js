@@ -29,7 +29,7 @@ const useStyles = makeStyles( (theme) => ({
             cursor:"pointer",
         },
     },
-    button:{
+    end:{
         // Add the styles provided here
         '-webkit-appearance': 'none',
         '-moz-appearance': 'none',
@@ -364,7 +364,7 @@ const Home = (props) => {
                     </Grid>
                     
                     <Grid xs={12} sm={4} item>
-                        <img src={`https://${data.data[1].image}`} className={classes.image} />                    
+                        <img src={`https://labs.openai.com/e/MUEvqgypd4HPaaTPCC4hEUWx/IKN6OjwiNgCNmt8nfFzpvYtv`} className={classes.image} />                    
                     </Grid>
                     <Grid xs={12} sm={2} item>
                         <Typography variant="h4" color="secondary">At affordable prices</Typography>
@@ -493,10 +493,7 @@ const Home = (props) => {
                         color="textSecondary">© 2021</Typography>
                         <Typography variant="h4" gutterBottom="true"
                         color="secondary">All rights reserved</Typography>
-                        <Typography variant="h4" gutterBottom="true"
-                        color="textSecondary">Made with ❤️ by</Typography>
-                        <Typography variant="h4" gutterBottom="true"
-                        color="secondary">Team 1</Typography>
+      
 
 
                     </Grid>
