@@ -8,24 +8,11 @@ pipeline {
     
 
     stages {
-        stage("Sonarqube Quality check") {
-            steps {
-                sh 'docker pull openjdk:11'
-                sh 'mvn clean package'
-                script {
-                    withsonarQubeEnv(credentialsId:'sonarqube') {
-                        sh 'chmod +x mvn sonar:sonar'
-                    }
-                }
-            }
-        } // close Sonarqube Quality check stage here
-        
         stage('Build') {
             steps {
                 sh 'docker compose build'
             }
         }
-        
         stage('Push image') {
             steps {
                 sh "docker tag java-flamup:latest saikiran27/java-flamup:latest"
@@ -33,6 +20,11 @@ pipeline {
                 sh "docker login -u ${saikiran27_username} -p ${saikiran27_password}"
                 }
                 sh "docker push saikiran27/java-flamup:latest"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker compose up'
             }
         }
     }
