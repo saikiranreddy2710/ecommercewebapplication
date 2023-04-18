@@ -364,7 +364,7 @@ const Home = (props) => {
                     </Grid>
                     
                     <Grid xs={12} sm={4} item>
-                        <img src={`https://labs.openai.com/e/MUEvqgypd4HPaaTPCC4hEUWx/IKN6OjwiNgCNmt8nfFzpvYtv`} className={classes.image} />                    
+                        <img src={`https://images.unsplash.com/photo-1581338834647-b0fb40704e21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2F0d2Fsa3N8ZW58MHx8MHx8&w=300&q=80`} className={classes.image} />                    
                     </Grid>
                     <Grid xs={12} sm={2} item>
                         <Typography variant="h4" color="secondary">At affordable prices</Typography>
