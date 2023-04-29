@@ -28,7 +28,7 @@ pipeline {
                 echo 'success'
             }
         }
-        steps('Test') {
+        stage('Test') {
             steps {
                 echo 'Testing'
             }
