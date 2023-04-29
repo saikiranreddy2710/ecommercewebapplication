@@ -25,7 +25,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker compose up -d'
+                echo 'success'
+            }
+        }
+        steps('Test') {
+            steps {
+                echo 'Testing'
             }
         }
     }
