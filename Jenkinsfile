@@ -24,13 +24,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'success'
+                sh 'kubectl apply -f k8s-deployment.yaml'
+                echo 'deployment success'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing'
-            }
-        }
+
     }
 }
